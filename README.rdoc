@@ -1,12 +1,29 @@
 == Code Challenge
 
+==== PivotalTracker project link
+https://www.pivotaltracker.com/n/projects/1543381
+
+==== My process
+After writing the user stories and configuring a new Rails app, the first
+thing I like to do is build a Site Map. This includes the routes, blank pages and 
+links. The site map demonstrates how pages will be linked together. And building 
+the routing layer is important because it shows which routes are public and which
+routes are protected (requiring the user to be logged in). I think it's a good 
+practice to make sure the routing layer is correct before creating a lot of pages
+with links - because making changes to the routes later on will result in broken links.
+
+I used Gitflow branching on this project. SourceTree is what I use to help manage
+my branches and visualize the commit history
+
+==== Asset references
 I updated the asset references by visiting five of the sites and using the Chrome 
 developer console. In the Network tab it shows a list of assets and their URLs.
 I copied and pasted an asset URL for each app into the seed file.
 
-==== How you would go about keeping the asset references up to date?
+==== How you would go about keeping the asset references up to date programatically?
 Maybe by using an HTTP client and then parsing the response to get an asset URL.
 You could iterate over all the apps and send the HTTP requests in parallel so the
 performance would be better versus sending the HTTP requests synchronously.
 
-I wrote Request Specs and a Controller spec
+==== Specs
+I wrote Request Specs and a Controller spec for this project

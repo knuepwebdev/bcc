@@ -1,28 +1,12 @@
-== README
+== Code Challenge
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+I updated the asset references by visiting five of the sites and using the Chrome 
+developer console. In the Network tab it shows a list of assets and their URLs.
+I copied and pasted an asset URL for each app into the seed file.
 
-Things you may want to cover:
+==== How you would go about keeping the asset references up to date?
+Maybe by using an HTTP client and then parsing the response to get an asset URL.
+You could iterate over all the apps and send the HTTP requests in parallel so the
+performance would be better versus sending the HTTP requests synchronously.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+I wrote Request Specs and a Controller spec

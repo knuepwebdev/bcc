@@ -1,6 +1,6 @@
 $(document).ready(function() {
-  var targets = gon.apps;
   $apps = $('.apps');
+  var targets;
 
   /*************************
    * CONFIGURABLE SETTINGS *
@@ -174,7 +174,9 @@ $(document).ready(function() {
     maybe_test_next();
   }
 
+  // logged in
   if (window.location.pathname === '/') {
+    targets = gon.apps;
     initialize();
   }
 });

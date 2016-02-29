@@ -6,6 +6,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 require 'database_cleaner'
+require 'devise'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -21,7 +22,7 @@ require 'database_cleaner'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-# Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 RSpec.configure do |config|
   # RSpec Rails can automatically mix in different behaviours to your tests
@@ -38,6 +39,10 @@ RSpec.configure do |config|
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
   config.include FactoryGirl::Syntax::Methods
+  config.include Rails.application.routes.url_helpers
+  config.include Devise::TestHelpers, type: :controller
+  config.extend ControllerMacros, type: :controller
+  config.include RequestMacros, type: :request
   config.infer_spec_type_from_file_location!
 
   # Filter lines from Rails gems in backtraces.

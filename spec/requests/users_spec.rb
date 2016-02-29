@@ -15,14 +15,14 @@ describe 'Users', type: :request do
   describe 'log in' do
     it 'should redirect to the user dashboard' do
       post user_session_path, log_in_params
-      expect(response).to redirect_to dashboard_path
+      expect(response).to redirect_to apps_path
     end
   end
 
   describe 'log out' do
     it 'should redirect to the log in page' do
       delete destroy_user_session_path
-      expect(response).to redirect_to log_in_path
+      expect(response).to redirect_to new_user_session_path
     end
   end
 end

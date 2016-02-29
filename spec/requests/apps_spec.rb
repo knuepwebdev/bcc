@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Apps', type: :request do
   let(:an_app) { FactoryGirl.create(:app) }
   let(:user) { FactoryGirl.create(:user) }
-  let(:app_params) {{ apps: ['_id' => {'$oid' =>  an_app.id.to_s}, name: an_app.name, urls: an_app.urls].to_json }}
+  let(:app_params) {{ visited_apps: ['_id' => {'$oid' =>  an_app.id.to_s}, name: an_app.name, urls: an_app.urls].to_json }}
 
   describe "update a user's visited apps" do
     before(:each) { sign_in user }

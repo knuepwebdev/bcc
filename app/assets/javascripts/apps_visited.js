@@ -11,7 +11,7 @@ $(document).ready(function() {
   /**********************
    * MAIN STATE MACHINE *
    **********************/
-  var appsVisited = [];
+  var visitedApps = [];
   var appsNotVisited = [];
   var target_off = 0;
   var attempt = 0;
@@ -107,7 +107,7 @@ $(document).ready(function() {
       }
 
       if (confirmed_visited) {
-        appsVisited.push(targets[target_off])
+        visitedApps.push(targets[target_off])
       }
 
       if (confirmed_visited || attempt == MAX_ATTEMPTS * targets[target_off].urls.length) {
@@ -128,12 +128,10 @@ $(document).ready(function() {
       }
 
     } else {
-      console.log('***')
-      console.log(appsVisited);
       $.ajax({
         type: 'PATCH',
         url: 'http://localhost:3000/update_apps',
-        data: {apps: JSON.stringify(appsVisited)},
+        data: {visited_apps: JSON.stringify(visitedApps)},
         success: updateAppsSuccessCallback
       })
     }
@@ -143,7 +141,7 @@ $(document).ready(function() {
     console.log('updateAppsSuccessCallback');
     console.log(data);
     $('.apps').empty();
-    appsVisited.forEach(listVisitedApps);
+    visitedApps.forEach(listVisitedApps);
     appsNotVisited.forEach(listAppsNotVisited);
   }
 

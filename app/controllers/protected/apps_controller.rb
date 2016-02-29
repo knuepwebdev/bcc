@@ -6,14 +6,17 @@ class Protected::AppsController < Protected::ApplicationController
   end
 
   def update
-    visited_apps = JSON.parse(params['apps'])
+    current_user.visited_apps.destroy_all
     visited_apps.each do |visited_app|
       id = visited_app['_id']['$oid']
-      unless current_user.visited_apps.where(app_id: id).exists?
-        app = App.find(id)
-        current_user.visited_apps.create(app: app)
-      end
+      app = App.find(id)
+      current_user.visited_apps.create(app: app)
     end
     render json: { status: 'ok' }
+  end
+
+  private
+  def visited_apps
+    JSON.parse(params[:visited_apps])
   end
 end

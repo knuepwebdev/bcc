@@ -132,17 +132,21 @@ $(document).ready(function() {
         type: 'PATCH',
         url: 'http://localhost:3000/update_apps',
         data: {visited_apps: JSON.stringify(visitedApps)},
-        success: updateAppsSuccessCallback
+        success: onSuccessUpdateApps,
+        error: onErrorUpdateApps
       })
     }
   }
 
-  function updateAppsSuccessCallback(data) {
-    console.log('updateAppsSuccessCallback');
-    console.log(data);
+  function onSuccessUpdateApps(response) {
     $('.apps').empty();
     visitedApps.forEach(listVisitedApps);
     appsNotVisited.forEach(listAppsNotVisited);
+  }
+
+  function onErrorUpdateApps(response) {
+    console.log('onErrorCallback');
+    console.log(response.statusText);
   }
 
   function listVisitedApps(app) {
